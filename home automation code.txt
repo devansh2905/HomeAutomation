@@ -1,0 +1,96 @@
+#define relay4 2
+#define relay3 3
+#define relay2 4
+#define relay1 5
+char data;
+void setup() {
+  
+
+  Serial.begin(9600);
+  pinMode(relay1, OUTPUT);
+  pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);
+  pinMode(relay4, OUTPUT);
+  digitalWrite(relay1,HIGH);
+  digitalWrite(relay2,HIGH);
+  digitalWrite(relay3,HIGH);
+  digitalWrite(relay4,HIGH);
+  
+ }
+
+void loop(){
+   
+  if (Serial.available() > 0)
+  {
+    delay(10);
+    
+    data = Serial.read();
+    if (data == 'a')
+    {
+      digitalWrite(relay4, LOW);
+      Serial.println("Light ON");
+    }
+    else if (data == 'b')
+    {
+      digitalWrite(relay4, HIGH);
+      Serial.println("Light OFF");
+      
+    }
+   
+    else if (data == 'c')
+    {
+      digitalWrite(relay3, LOW);
+      Serial.println("Light ON");
+      
+    }
+    else if (data == 'd')
+    {
+      digitalWrite(relay3, HIGH);
+      Serial.println("Light OFF");
+      
+    }
+    else if (data == 'e')
+    {
+      digitalWrite(relay2, LOW);
+      Serial.println("Light ON");
+      
+    }
+    else if (data == 'f')
+    {
+      digitalWrite(relay2, HIGH);
+      Serial.println("Light OFF");
+      
+    }
+    else if (data == 'g')
+    {
+      digitalWrite(relay1, LOW);
+      Serial.println("Light ON");
+      
+    }
+    else if (data == 'h')
+    {
+      digitalWrite(relay1, HIGH);
+      Serial.println("Light OFF");
+      
+    }
+     else if (data == 'x')
+    {
+      digitalWrite(relay4, LOW);
+      digitalWrite(relay3, LOW);
+      digitalWrite(relay2, LOW);
+      digitalWrite(relay1, LOW);
+      Serial.println("All Lights ON");
+      
+    }
+   else if (data == 'y')
+    {
+      digitalWrite(relay4, HIGH);
+      digitalWrite(relay3, HIGH);
+      digitalWrite(relay2, HIGH);
+      digitalWrite(relay1, HIGH);
+      Serial.println("All Lights OFF");
+      
+    }
+  }
+
+}
